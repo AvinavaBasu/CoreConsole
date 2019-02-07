@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ConsoleApp1
 {
-    class Program
+    public class Program : Abs
     {
         static void Main(string[] args)
         {
@@ -54,13 +54,35 @@ namespace ConsoleApp1
 
             //MultiplesOF3and5();
             //EvenFibonacci();
-            DifferenceOfSums();
+            //DifferenceOfSums();
+
+
+            //Singleton singleton = new Singleton();
+            //Singleton singleton = Singleton.GetInstance;
+            //singleton.PrintDetails("This is 1st mesg");
+            //singleton.PrintDetails("This is second msg");
+
+
+            ////invoking another instance to see that 2 objects of the class is created
+
+            ////Singleton singletonNew = new Singleton();
+            //Singleton singletonNew = Singleton.GetInstance;
+            //singletonNew.PrintDetails("This is 1st mesg");
+            //singletonNew.PrintDetails("This is second msg");
+
+           NoLetetrsRepeated(new string[] { "I LOVE YOU", "I LOVE MUSTARD" });
+
             Console.ReadKey();
+        }
+
+        public override void absMethod()
+        {
+            throw new NotImplementedException();
         }
 
         public static int SumOfDigits(int num)
         {
-            if (num>0)
+            if (num > 0)
             {
                 int sum = 1;
                 while (num / 10 != 0)
@@ -76,21 +98,21 @@ namespace ConsoleApp1
 
             }
             else
-            return 0;
+                return 0;
         }
 
-        public static bool iSArmStrong(int num,int sumOfDigs)
+        public static bool iSArmStrong(int num, int sumOfDigs)
         {
             //double sum = Math.Pow(num%10,sumOfDigs);
             double sum = 0;
             for (int i = 0; i < sumOfDigs; i++)
             {
-                num = num/ 10;
+                num = num / 10;
                 var mod = num % 10;
-                                                                                                                                                      sum = sum + Math.Pow(mod, sumOfDigs);
+                sum = sum + Math.Pow(mod, sumOfDigs);
             }
 
-            if (sum==num)
+            if (sum == num)
             {
                 return true;
             }
@@ -115,15 +137,15 @@ namespace ConsoleApp1
             {
                 char[] newCharArr = new char[100];
                 var c = charArray[i];
-                
-                
+
+
             }
         }
 
         public static string StringReverse(string word)
         {
             var list = new List<char>();
-            for (int i = word.Length-1; i >= 0; i--)
+            for (int i = word.Length - 1; i >= 0; i--)
             {
                 var c = word[i];
                 list.Add(c);
@@ -131,18 +153,18 @@ namespace ConsoleApp1
             var stringOCncat = string.Concat(list);
             return stringOCncat;
         }
-        
+
         public static void justlikethat(int a)
         {
             for (int i = 1; i < 3; i++)
             {
                 for (int j = 1; j < 3; j++)
                 {
-                    if (a==5)
+                    if (a == 5)
                     {
                         break;
                     }
-                    Console.WriteLine(i+j);
+                    Console.WriteLine(i + j);
                 }
             }
         }
@@ -177,7 +199,7 @@ namespace ConsoleApp1
             Console.WriteLine(c);
         }
 
-        
+
         public static void usingParams(params object[] paramsters)
         {
             var list = new List<T>();
@@ -188,7 +210,7 @@ namespace ConsoleApp1
             list.Add(new T { Id = 1, Name = paramsters.ToString() });
             foreach (var item in list)
             {
-                
+
                 Console.WriteLine(item.Id);
                 Console.WriteLine(item.Name);
 
@@ -199,8 +221,8 @@ namespace ConsoleApp1
         public static void BubbleSort(int[] a) //( new[] { 2, 1, 8, 3, 9 });
         {
             var temp = 0;
-            bool flag=true;
-            for (int i = 0; i < a.Length-1 && flag; i++)
+            bool flag = true;
+            for (int i = 0; i < a.Length - 1 && flag; i++)
             {
                 flag = false;
                 for (int j = 0; j < a.Length - 1; j++)
@@ -214,14 +236,14 @@ namespace ConsoleApp1
                     }
                 }
             }
-            
+
             foreach (var item in a)
             {
                 Console.WriteLine(item);
             }
         }
 
-        public static string findNumber(List<int> arr,int k)
+        public static string findNumber(List<int> arr, int k)
         {
             if (arr.Contains(k))
                 return "YES";
@@ -234,12 +256,12 @@ namespace ConsoleApp1
         }
 
 
-        public static List<int> oddNumbers(int l,int r)
+        public static List<int> oddNumbers(int l, int r)
         {
             var list = new List<int>();
             for (int i = l; i <= r; i++)
             {
-                if (i%2!=0)
+                if (i % 2 != 0)
                 {
                     list.Add(i);
                 }
@@ -249,7 +271,7 @@ namespace ConsoleApp1
 
         private static int sockMerchant(int n, int[] ar)
         {
-            var dict = new Dictionary<int,int>();
+            var dict = new Dictionary<int, int>();
             foreach (var item in ar)
             {
                 dict.TryAdd(item, 0);
@@ -260,9 +282,9 @@ namespace ConsoleApp1
             foreach (var item in dict)
             {
                 var value = item.Value;
-                if (value%2==0)
+                if (value % 2 == 0)
                 {
-                    count=count+(value/2);
+                    count = count + (value / 2);
                 }
             }
             return count;
@@ -270,9 +292,9 @@ namespace ConsoleApp1
 
         public static int jumpingOnClouds(int[] c)
         {
-            int path=0;
+            int path = 0;
             bool isValid = true;
-            for (int i = 0; i < c.Length-1&& isValid ;)
+            for (int i = 0; i < c.Length - 1 && isValid;)
             {
                 try
                 {
@@ -293,7 +315,7 @@ namespace ConsoleApp1
                     path++;
                     isValid = false;
                 }
-                
+
             }
             return path;
         }
@@ -301,23 +323,23 @@ namespace ConsoleApp1
         static long repeatedString(string s, long n)
         {
             StringBuilder finalString = new StringBuilder();
-            var c= s.ToCharArray();
-            for (int i = 0; i <= n && finalString.Length<=n-1;)
+            var c = s.ToCharArray();
+            for (int i = 0; i <= n && finalString.Length <= n - 1;)
             {
-                if (i<c.Length)
+                if (i < c.Length)
                 {
                     finalString.Append(c[i]).ToString();
                     i++;
                 }
                 else
                 {
-                    i=0;
+                    i = 0;
                     finalString.Append(c[i]).ToString();
                     i++;
-                }  
+                }
             }
             var getString = finalString.ToString();
-            var count = getString.Count(x=>x=='a');
+            var count = getString.Count(x => x == 'a');
 
             return count;
         }
@@ -327,7 +349,7 @@ namespace ConsoleApp1
             int count = 0;
             for (int i = 0; i < 1000; i++)
             {
-                if (i%3==0 || i%5==0)
+                if (i % 3 == 0 || i % 5 == 0)
                 {
                     count = count + i;
                 }
@@ -338,34 +360,71 @@ namespace ConsoleApp1
         {
             int oldnum = 0;
             int newNum = 1;
-            int temp=0;
-            for (int i = 0; i < 10;i++)
+            int temp = 0;
+            for (int i = 0; i < 10; i++)
             {
-                temp = newNum+oldnum;//temp=1 // temp= 1
+                temp = newNum + oldnum;//temp=1 // temp= 1
                 Console.WriteLine(temp);
-                Console.WriteLine("Sum is {0}",temp+oldnum);
-                newNum =oldnum; //newNum= 1//
-                oldnum= temp; // temp=0 // oldNum= 2
+                Console.WriteLine("Sum is {0}", temp + oldnum);
+                newNum = oldnum; //newNum= 1//
+                oldnum = temp; // temp=0 // oldNum= 2
             }
-            
+
         }
 
         static void DifferenceOfSums()
         {
-            double sumOfsquares=0;
-            double squaredSums=0;double diff = 0;
-            sumOfsquares = (100 * (100 + 1) * (2*100 + 1)) / 6; //n*(n+1)*(2n+1)/6
-            squaredSums =Math.Pow( 100*(100+1)/2,2); //n(n+1)/2
+            double sumOfsquares = 0;
+            double squaredSums = 0; double diff = 0;
+            sumOfsquares = (100 * (100 + 1) * (2 * 100 + 1)) / 6; //n*(n+1)*(2n+1)/6
+            squaredSums = Math.Pow(100 * (100 + 1) / 2, 2); //n(n+1)/2
             diff = squaredSums - sumOfsquares;
-            Console.WriteLine("Diff is {0}",+diff);
+            Console.WriteLine("Diff is {0}", +diff);
         }
 
         static void quadraticEquation()
         {
-            double a=1, b=1, p=1, q=1,sum=0;
+            double a = 1, b = 1, p = 1, q = 1, sum = 0;
             sum = Math.Pow(a, p) + Math.Pow(b, q);
         }
 
+        static void NoLetetrsRepeated(params string[] s)
+        {
+            //var list = new List<char>();
+            //var finalList = new List<string>();
+            //foreach (var item in s)
+            //{
+            //    string table = "";
+            //    string result = "";
+            //    foreach (char value in item)
+            //    {
+            //        result+=item.SkipWhile(
+            //            x => x.ToString().Contains(value));
+            //        //if (table.IndexOf(value) == -1)
+            //        //{
+            //        //    table += value;
+            //        //    result += value;
+            //        //}
+            //    }
+            //}
+
+            var finalList = new List<string>();
+            foreach (var item in s)
+            {
+                var chArr = new List<char>();
+                var arr = item.Where(x => x != ' ').ToList();
+                var unique = new HashSet<char>(item.Where(x=>x!=' '));
+                foreach (var char1 in unique)
+                {
+                    chArr.Add(char1);
+                }
+                if (chArr.SequenceEqual(arr))
+                {
+                    Console.WriteLine(item);
+                }
+            }
+
+        }
 
     }
 
@@ -373,14 +432,50 @@ namespace ConsoleApp1
     {
         public int x;
         private int y;
-        public void cal(int a,int b)
+        public void cal(int a, int b)
         {
             x = a + 1;
             b = y;
         }
         public void print()
         {
-            Console.WriteLine("",+y);
+            Console.WriteLine("", +y);
         }
+    }
+
+    public abstract class Abs{
+
+        public int MyId { get; set; }
+
+        public abstract void absMethod();
+    }
+
+    public sealed class Singleton
+    {
+        private static int counter = 0;
+
+        public static Singleton instance = null;
+        public static Singleton GetInstance
+        {
+            get
+            {
+                if (instance==null)
+                {
+                    instance = new Singleton();
+                }
+                return instance; 
+            }
+        }
+        private Singleton()
+        {
+            counter++;
+            Console.WriteLine("Counter value is "+counter);
+        }
+        public void PrintDetails(string msg)
+        {   
+            Console.WriteLine(msg);
+        }
+
+
     }
 }
